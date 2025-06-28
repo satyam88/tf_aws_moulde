@@ -12,7 +12,7 @@ data "aws_ami" "amazon-linux-3" {
 
   filter {
     name   = "owner-alias"
-    values = ["amazon"]
+    values = ["533267238276"]
   }
 
   filter {
@@ -28,4 +28,5 @@ data "aws_ami" "amazon-linux-3" {
 resource "aws_instance" "myinstance" {
   ami           = data.aws_ami.amazon-linux-3.id
   instance_type = var.instance_type
+  count         = var.instance_count
 }
