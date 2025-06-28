@@ -11,18 +11,16 @@ data "aws_ami" "amazon-linux-3" {
   }
 
   filter {
-    name   = "owner-alias"
-    values = ["533267238276"]
-  }
-
-  filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
+
   filter {
     name   = "architecture"
     values = ["x86_64"]
   }
+
+  owners = ["137112412989"] # Official Amazon Linux AMI owner ID
 }
 
 resource "aws_instance" "myinstance" {
